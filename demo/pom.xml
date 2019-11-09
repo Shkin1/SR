@@ -70,51 +70,95 @@
 
 
 	<build>
-		<pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-			<plugins>
-				<plugin>
-					<groupId>org.mybatis.generator</groupId>
-					<artifactId>mybatis-generator-maven-plugin</artifactId>
-					<version>1.3.5</version>
-					<dependencies>
-						<dependency>
-							<groupId>org.mybatis.generator</groupId>
-							<artifactId>mybatis-generator-core</artifactId>
-							<version>1.3.5</version>
-						</dependency>
-						<dependency>
-							<groupId>mysql</groupId>
-							<artifactId>mysql-connector-java</artifactId>
-							<version>5.1.41</version>
-						</dependency>
-					</dependencies>
-					<executions>
-						<execution>
-							<id>mybatis generator</id>
-							<phase>package</phase>
-							<goals>
-								<goal>generate</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<!--允许移动生成的文件-->
-						<verbose>true</verbose>
-						<!--允许自动覆盖文件-->
-						<overwrite>true</overwrite>
-						<configurationFile>
-							src/main/resources/mybatis-generator.xml
-						</configurationFile>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.mybatis.generator</groupId>
+                        <artifactId>mybatis-generator-core</artifactId>
+                        <version>1.3.5</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>5.1.41</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>mybatis generator</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!--允许移动生成的文件-->
+                    <verbose>true</verbose>
+                    <!--允许自动覆盖文件-->
+                    <overwrite>true</overwrite>
+                    <configurationFile>
+                        src/main/resources/mybatis-generator.xml
+                    </configurationFile>
+                </configuration>
+            </plugin>
+            <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+
+
+
+		<!--<pluginManagement>&lt;!&ndash; lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) &ndash;&gt;-->
+			<!--<plugins>-->
+				<!--<plugin>-->
+					<!--<groupId>org.mybatis.generator</groupId>-->
+					<!--<artifactId>mybatis-generator-maven-plugin</artifactId>-->
+					<!--<version>1.3.5</version>-->
+					<!--<dependencies>-->
+						<!--<dependency>-->
+							<!--<groupId>org.mybatis.generator</groupId>-->
+							<!--<artifactId>mybatis-generator-core</artifactId>-->
+							<!--<version>1.3.5</version>-->
+						<!--</dependency>-->
+						<!--<dependency>-->
+							<!--<groupId>mysql</groupId>-->
+							<!--<artifactId>mysql-connector-java</artifactId>-->
+							<!--<version>5.1.41</version>-->
+						<!--</dependency>-->
+					<!--</dependencies>-->
+					<!--<executions>-->
+						<!--<execution>-->
+							<!--<id>mybatis generator</id>-->
+							<!--<phase>package</phase>-->
+							<!--<goals>-->
+								<!--<goal>generate</goal>-->
+							<!--</goals>-->
+						<!--</execution>-->
+					<!--</executions>-->
+					<!--<configuration>-->
+						<!--&lt;!&ndash;允许移动生成的文件&ndash;&gt;-->
+						<!--<verbose>true</verbose>-->
+						<!--&lt;!&ndash;允许自动覆盖文件&ndash;&gt;-->
+						<!--<overwrite>true</overwrite>-->
+						<!--<configurationFile>-->
+							<!--src/main/resources/mybatis-generator.xml-->
+						<!--</configurationFile>-->
+					<!--</configuration>-->
+				<!--</plugin>-->
+			<!--</plugins>-->
+		<!--</pluginManagement>-->
+		<!--<plugins>-->
+			<!--<plugin>-->
+				<!--<groupId>org.springframework.boot</groupId>-->
+				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+			<!--</plugin>-->
+		<!--</plugins>-->
 	</build>
 
 </project>
