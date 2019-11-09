@@ -1,7 +1,9 @@
 package com.sr.demo.mapper;
 
 import com.sr.demo.model.CategoryModel;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface CategoryModelMapper {
     int deleteByPrimaryKey(Integer id);
 
