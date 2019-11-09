@@ -36,15 +36,30 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserModel register(UserModel registerUser) throws SrException {
+    public UserModel register(UserModel registerUser) throws SrException, UnsupportedEncodingException, NoSuchAlgorithmException {
+        registerUser.setPassword(encodeByMd5(registerUser.getPassword()));
         registerUser.setCreatedAt(new Date());
         registerUser.setUpdatedAt(new Date());
         try{
             userModelMapper.insertSelective(registerUser);
-        } catch (DuplicateKeyException){
+        } catch (DuplicateKeyException ex){
             throw new SrException(SrErrorEnum.REGISTER_DUP_FAIL);
         }
         return getUser(registerUser.getId());
+    }
+
+    @Override
+    public UserModel login(String telphone, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException, SrException {
+        UserModel userModel = userModelMapper.selectByTelphoneAndPassword(telphone,encodeByMd5(password));
+        if(userModel == null){
+            throw new SrException(SrErrorEnum.LOGIN_FAIL);
+        }
+        return userModel;
+    }
+
+    @Override
+    public Integer countAllUser() {
+        return userModelMapper.countAllUser();
     }
 
     private String encodeByMd5(String str) throws NoSuchAlgorithmException, UnsupportedEncodingException {

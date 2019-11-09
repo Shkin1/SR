@@ -1,6 +1,10 @@
 package com.sr.demo.service;
 
+import com.sr.demo.common.SrException;
 import com.sr.demo.model.UserModel;
+
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @author pushkin
@@ -14,4 +18,10 @@ import com.sr.demo.model.UserModel;
 
 public interface UserService {
     UserModel getUser(Integer id);
+
+    UserModel register(UserModel registerUser) throws SrException, UnsupportedEncodingException, NoSuchAlgorithmException;
+
+    UserModel login(String telphone, String password) throws UnsupportedEncodingException, NoSuchAlgorithmException, SrException;
+
+    Integer countAllUser();
 }

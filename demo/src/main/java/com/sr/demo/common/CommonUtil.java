@@ -20,8 +20,10 @@ public class CommonUtil {
         }
         StringBuilder stringBuilder = new StringBuilder();
         for(FieldError fieldError:bindingResult.getFieldErrors()){
+            // 将request的对象校验的message拼接起来
             stringBuilder.append(fieldError.getDefaultMessage()+",");
         }
+        // 删除最后一个,
         return stringBuilder.substring(0,stringBuilder.length()-1);
     }
 }

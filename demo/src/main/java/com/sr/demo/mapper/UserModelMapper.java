@@ -2,6 +2,7 @@ package com.sr.demo.mapper;
 
 import com.sr.demo.model.UserModel;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserModelMapper {
@@ -16,4 +17,8 @@ public interface UserModelMapper {
     int updateByPrimaryKeySelective(UserModel record);
 
     int updateByPrimaryKey(UserModel record);
+
+    UserModel selectByTelphoneAndPassword(@Param("telphone") String telphone, @Param("password")String password);
+
+    Integer countAllUser();
 }
