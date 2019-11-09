@@ -1,6 +1,13 @@
 package com.sr.demo.common;
 
+import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.NoHandlerFoundException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author shijinpu
@@ -15,4 +22,23 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 @ControllerAdvice
 public class SrExceptionHandle {
 
+    @ExceptionHandler(Exception.class)
+    @ResponseBody
+    public CommonRes doError(HttpServletRequest servletRequest, HttpServletResponse httpServletResponse, Exception ex){
+        if(ex instanceof SrException){
+            return CommonRes.create(((SrException)ex).getSrCommonError(),"fail");
+        }
+        else if(ex instanceof NoHandlerFoundException){
+            SrCommonError commonError = new SrCommonError(SrErrorEnum.NO_HANDLER_FOUND);
+            return CommonRes.create(commonError,"fail");
+        }else if(ex instanceof ServletRequestBindingException){
+            SrCommonError commonError = new SrCommonError(SrErrorEnum.BIND_EXCEPTION_ERROR);
+            return CommonRes.create(commonError,"fail");
+        }
+        else {
+            SrCommonError commonError = new SrCommonError(SrErrorEnum.UNKNOWN_ERROR);
+            return CommonRes.create(commonError,"fail");
+        }
+
+    }
 }
