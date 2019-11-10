@@ -1,12 +1,13 @@
 package com.sr.demo.mapper;
 
 import com.sr.demo.model.ShopModel;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
-
+@Mapper
 public interface ShopModelMapper {
     int deleteByPrimaryKey(Integer id);
 

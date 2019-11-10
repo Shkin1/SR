@@ -10,6 +10,7 @@ import com.sr.demo.service.CategoryService;
 import com.sr.demo.service.SellerService;
 import com.sr.demo.service.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -26,7 +27,7 @@ import java.util.Map;
  * Date         Author          Version            Description
  * ------------------------------------------------------------
  */
-
+@Service
 public class ShopServiceImpl implements ShopService{
     @Autowired
     private ShopModelMapper shopModelMapper;

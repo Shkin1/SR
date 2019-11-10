@@ -3,6 +3,9 @@ package com.sr.demo.controller.admin;
 import com.sr.demo.common.AdminPermission;
 import com.sr.demo.common.SrErrorEnum;
 import com.sr.demo.common.SrException;
+import com.sr.demo.service.CategoryService;
+import com.sr.demo.service.SellerService;
+import com.sr.demo.service.ShopService;
 import com.sr.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +29,7 @@ public class AdminController {
     @Value("${admin.email}")
     private String email;
 
+
     @Value("${admin.encryptPassword}")
     private String encrptyPassord;
 
@@ -34,6 +38,16 @@ public class AdminController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CategoryService categoryService;
+
+    @Autowired
+    private ShopService shopService;
+
+    @Autowired
+    private SellerService sellerService;
+
 
     public static final String CURRENT_ADMIN_SESSION = "currentAdminSession";
 
@@ -45,6 +59,9 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView("/admin/admin/index");
 
         modelAndView.addObject("userCount",userService.countAllUser());
+        modelAndView.addObject("shopCount",shopService.countAllShop());
+        modelAndView.addObject("categoryCount",categoryService.countAllCategory());
+        modelAndView.addObject("sellerCount",sellerService.countAllSeller());
         modelAndView.addObject("CONTROLLER_NAME","admin");
         modelAndView.addObject("ACTION_NAME","index");
         return modelAndView;

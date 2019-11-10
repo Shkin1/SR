@@ -67,7 +67,7 @@
 
        注意，table里面很多参数都是对javaModelGenerator，context等元素的默认属性的一个复写；
        -->
-        <table tableName="user" domainObjectName="UserModel" enableCountByExample="false"
+        <table tableName="shop" domainObjectName="ShopModel" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" selectByExampleQueryId="false">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>

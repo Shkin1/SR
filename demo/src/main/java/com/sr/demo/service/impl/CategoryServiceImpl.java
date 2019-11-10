@@ -7,6 +7,7 @@ import com.sr.demo.model.CategoryModel;
 import com.sr.demo.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
@@ -21,7 +22,7 @@ import java.util.List;
  * Date         Author          Version            Description
  * ------------------------------------------------------------
  */
-
+@Service
 public class CategoryServiceImpl implements CategoryService{
 
     @Autowired
