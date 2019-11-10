@@ -22,6 +22,16 @@ public class ShopModel {
 
     private Integer categoryId;
 
+    private CategoryModel categoryModel;
+
+    public CategoryModel getCategoryModel() {
+        return categoryModel;
+    }
+
+    public void setCategoryModel(CategoryModel categoryModel) {
+        this.categoryModel = categoryModel;
+    }
+
     private String tags;
 
     private String startTime;
@@ -31,6 +41,16 @@ public class ShopModel {
     private String address;
 
     private Integer sellerId;
+
+    private SellerModel sellerModel;
+
+    public SellerModel getSellerModel() {
+        return sellerModel;
+    }
+
+    public void setSellerModel(SellerModel sellerModel) {
+        this.sellerModel = sellerModel;
+    }
 
     private String iconUrl;
 
