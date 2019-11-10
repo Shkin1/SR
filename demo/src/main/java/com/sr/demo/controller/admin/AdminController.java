@@ -26,7 +26,6 @@ public class AdminController {
     @Value("${admin.email}")
     private String email;
 
-
     @Value("${admin.encryptPassword}")
     private String encrptyPassord;
 
@@ -39,6 +38,8 @@ public class AdminController {
     public static final String CURRENT_ADMIN_SESSION = "currentAdminSession";
 
     @RequestMapping("/index")
+//    @AdminPermission(produceType = "application/json")
+//    @ResponseBody
     @AdminPermission
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView("/admin/admin/index");
