@@ -17,6 +17,7 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
     <result column="icon_url" jdbcType="VARCHAR" property="iconUrl" />
+    <result column="distance" jdbcType="INTEGER" property="distance" />
   </resultMap>
   <sql id="Base_Column_List">
     id, created_at, updated_at, name, remark_score, price_per_man, latitude, longitude, 

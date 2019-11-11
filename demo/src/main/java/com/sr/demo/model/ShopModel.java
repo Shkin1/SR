@@ -54,6 +54,16 @@ public class ShopModel {
 
     private String iconUrl;
 
+    private Integer distance;
+
+    public Integer getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Integer distance) {
+        this.distance = distance;
+    }
+
     public Integer getId() {
         return id;
     }
