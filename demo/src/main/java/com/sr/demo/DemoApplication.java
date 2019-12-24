@@ -2,6 +2,8 @@ package com.sr.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
+
 /**
  * @author pushkin
  * @version v1.0.0
@@ -11,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Date         Author          Version            Description
  * ------------------------------------------------------------
  */
+@EnableScheduling
 @SpringBootApplication
 public class DemoApplication {
 
