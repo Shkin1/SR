@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sr.demo.mapper.DwdSpiderJobMapper">
+  <resultMap id="BaseResultMap" type="com.sr.demo.model.DwdSpiderJob">
+    <id column="uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="search_key" jdbcType="VARCHAR" property="searchKey" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="salary" jdbcType="VARCHAR" property="salary" />
+    <result column="education" jdbcType="VARCHAR" property="education" />
+    <result column="experience" jdbcType="VARCHAR" property="experience" />
+    <result column="welfare_tag" jdbcType="VARCHAR" property="welfareTag" />
+    <result column="summary_tag" jdbcType="VARCHAR" property="summaryTag" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="city_code" jdbcType="VARCHAR" property="cityCode" />
+    <result column="city_detail" jdbcType="VARCHAR" property="cityDetail" />
+    <result column="publish_date" jdbcType="VARCHAR" property="publishDate" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sr.demo.model.DwdSpiderJob">
+    <result column="position_desc" jdbcType="LONGVARCHAR" property="positionDesc" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    uuid, search_key, position, salary, education, experience, welfare_tag, summary_tag,
+    city, city_code, city_detail, publish_date, url, create_time
+  </sql>
+  <sql id="Blob_Column_List">
+    position_desc
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dwd_spider_job
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dwd_spider_job
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sr.demo.model.DwdSpiderJob">
+    insert into dwd_spider_job (uuid, search_key, position,
+      salary, education, experience,
+      welfare_tag, summary_tag, city,
+      city_code, city_detail, publish_date,
+      url, create_time, position_desc
+      )
+    values (#{uuid,jdbcType=VARCHAR}, #{searchKey,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR},
+      #{salary,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{experience,jdbcType=VARCHAR},
+      #{welfareTag,jdbcType=VARCHAR}, #{summaryTag,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR},
+      #{cityCode,jdbcType=VARCHAR}, #{cityDetail,jdbcType=VARCHAR}, #{publishDate,jdbcType=VARCHAR},
+      #{url,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{positionDesc,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+
+  <insert id="insertBatch">
+    insert into dwd_spider_job (uuid, search_key, position,position_peoples,
+      salary, salary_type, salary_lowest, salary_highest,education, experience,
+      welfare_tag, summary_tag, city,
+      city_code, city_detail, publish_date,
+      url, position_desc)
+    values
+    <foreach collection ="jobList" item="job" separator =",">
+      (#{job.uuid}, #{job.searchKey}, #{job.position},#{job.positionPeoples},
+      #{job.salary},#{job.salaryType},#{job.salaryLowest},#{job.salaryHighest}, #{job.education}, #{job.experience},
+      #{job.welfareTag}, #{job.summaryTag}, #{job.city},
+      #{job.cityCode}, #{job.cityDetail}, #{job.publishDate},
+      #{job.url}, #{job.positionDesc})
+    </foreach >
+  </insert>
+
+
+  <insert id="insertSelective" parameterType="com.sr.demo.model.DwdSpiderJob">
+    insert into dwd_spider_job
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        uuid,
+      </if>
+      <if test="searchKey != null">
+        search_key,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="salary != null">
+        salary,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="experience != null">
+        experience,
+      </if>
+      <if test="welfareTag != null">
+        welfare_tag,
+      </if>
+      <if test="summaryTag != null">
+        summary_tag,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="cityCode != null">
+        city_code,
+      </if>
+      <if test="cityDetail != null">
+        city_detail,
+      </if>
+      <if test="publishDate != null">
+        publish_date,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="positionDesc != null">
+        position_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="searchKey != null">
+        #{searchKey,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        #{salary,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="welfareTag != null">
+        #{welfareTag,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryTag != null">
+        #{summaryTag,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityDetail != null">
+        #{cityDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="publishDate != null">
+        #{publishDate,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="positionDesc != null">
+        #{positionDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sr.demo.model.DwdSpiderJob">
+    update dwd_spider_job
+    <set>
+      <if test="searchKey != null">
+        search_key = #{searchKey,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="salary != null">
+        salary = #{salary,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null">
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        experience = #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="welfareTag != null">
+        welfare_tag = #{welfareTag,jdbcType=VARCHAR},
+      </if>
+      <if test="summaryTag != null">
+        summary_tag = #{summaryTag,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="cityCode != null">
+        city_code = #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityDetail != null">
+        city_detail = #{cityDetail,jdbcType=VARCHAR},
+      </if>
+      <if test="publishDate != null">
+        publish_date = #{publishDate,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="positionDesc != null">
+        position_desc = #{positionDesc,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sr.demo.model.DwdSpiderJob">
+    update dwd_spider_job
+    set search_key = #{searchKey,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      experience = #{experience,jdbcType=VARCHAR},
+      welfare_tag = #{welfareTag,jdbcType=VARCHAR},
+      summary_tag = #{summaryTag,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      city_detail = #{cityDetail,jdbcType=VARCHAR},
+      publish_date = #{publishDate,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      position_desc = #{positionDesc,jdbcType=LONGVARCHAR}
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sr.demo.model.DwdSpiderJob">
+    update dwd_spider_job
+    set search_key = #{searchKey,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      salary = #{salary,jdbcType=VARCHAR},
+      education = #{education,jdbcType=VARCHAR},
+      experience = #{experience,jdbcType=VARCHAR},
+      welfare_tag = #{welfareTag,jdbcType=VARCHAR},
+      summary_tag = #{summaryTag,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      city_code = #{cityCode,jdbcType=VARCHAR},
+      city_detail = #{cityDetail,jdbcType=VARCHAR},
+      publish_date = #{publishDate,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where uuid = #{uuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

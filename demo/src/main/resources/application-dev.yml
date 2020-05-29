@@ -33,3 +33,6 @@ spider:
     write:
       mysql: false
       file: true
+
+elasticsearch:
+  ip: 127.0.0.1:9200
