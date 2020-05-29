@@ -37,4 +37,7 @@ public interface ShopModelMapper {
                                                @Param("categoryId")Integer categoryId,
                                                @Param("tags")String tags);
 
+    List<Map<String,Object>> buildESQuery(@Param("sellerId")Integer sellerId,@Param("categoryId")Integer categoryId,
+                                          @Param("shopId")Integer shopId);
+
 }
