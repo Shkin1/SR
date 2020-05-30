@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.job.service.persist.mapper.etl.DwdSpiderCorpMapper">
+  <resultMap id="BaseResultMap" type="com.job.service.persist.model.DwdSpiderCorp">
+    <id column=" uuid" jdbcType="VARCHAR" property="uuid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="peoples" jdbcType="VARCHAR" property="peoples" />
+    <result column="trade_tag" jdbcType="VARCHAR" property="tradeTag" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sr.demo.model.DwdSpiderCorp">
+    <result column="info" jdbcType="LONGVARCHAR" property="info" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    " uuid", name, type, peoples, trade_tag, url, create_time
+  </sql>
+  <sql id="Blob_Column_List">
+    info
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dwd_spider_corp
+    where " uuid" = #{uuid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from dwd_spider_corp
+    where " uuid" = #{uuid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sr.demo.model.DwdSpiderCorp">
+    insert into dwd_spider_corp (uuid, name, type,
+      peoples, trade_tag, url,
+      create_time, info)
+    values (#{uuid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},
+      #{peoples,jdbcType=VARCHAR}, #{tradeTag,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR},
+      #{createTime,jdbcType=TIMESTAMP}, #{info,jdbcType=LONGVARCHAR})
+  </insert>
+
+
+  <insert id="insertBatch">
+    insert into dwd_spider_corp (uuid, name, type, peoples, trade_tag, url, info)
+    values
+    <foreach collection ="cropList" item="crop" separator =",">
+      (#{crop.uuid}, #{crop.name}, #{crop.type},
+      #{crop.peoples}, #{crop.tradeTag}, #{crop.url},
+      #{crop.info})
+    </foreach >
+  </insert>
+
+
+  <insert id="insertSelective" parameterType="com.sr.demo.model.DwdSpiderCorp">
+    insert into dwd_spider_corp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        " uuid",
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="peoples != null">
+        peoples,
+      </if>
+      <if test="tradeTag != null">
+        trade_tag,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="info != null">
+        info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uuid != null">
+        #{uuid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="peoples != null">
+        #{peoples,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeTag != null">
+        #{tradeTag,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="info != null">
+        #{info,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sr.demo.model.DwdSpiderCorp">
+    update dwd_spider_corp
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="peoples != null">
+        peoples = #{peoples,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeTag != null">
+        trade_tag = #{tradeTag,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="info != null">
+        info = #{info,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where " uuid" = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sr.demo.model.DwdSpiderCorp">
+    update dwd_spider_corp
+    set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      peoples = #{peoples,jdbcType=VARCHAR},
+      trade_tag = #{tradeTag,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      info = #{info,jdbcType=LONGVARCHAR}
+    where " uuid" = #{uuid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sr.demo.model.DwdSpiderCorp">
+    update dwd_spider_corp
+    set name = #{name,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      peoples = #{peoples,jdbcType=VARCHAR},
+      trade_tag = #{tradeTag,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where " uuid" = #{uuid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -32,6 +32,8 @@
     <modules>
         <module>job-service-etl</module>
         <module>job-service-portal</module>
+        <module>job-service-common</module>
+        <module>job-service-persist</module>
     </modules>
 
     <!--    子模块可能用到的包-->
