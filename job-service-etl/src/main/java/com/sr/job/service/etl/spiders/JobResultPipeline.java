@@ -128,9 +128,11 @@ public class JobResultPipeline implements Pipeline<JobDetailBean> {
 
             if (EtlProps.IS_OPEN_WRITE_FILE){
                 String jobInfo = JSON.toJSONString(dwdSpiderJob);
+                String dwdSpiderJobStr = dwdSpiderJob.toString();
                 String corpInfo = JSON.toJSONString(dwdSpiderCorp);
                 try {
-                    FileUtils.writeStringToFile(new File("./result_job.txt"),jobInfo+"\r\n","utf-8",true);
+                    FileUtils.writeStringToFile(new File("./result_job_json.txt"),jobInfo+"\r\n","utf-8",true);
+                    FileUtils.writeStringToFile(new File("./result_job_train.txt"),dwdSpiderJobStr+"\r\n","utf-8",true);
                     FileUtils.writeStringToFile(new File("./result_corp.txt"),corpInfo+"\r\n","utf-8",true);
                 } catch (IOException e) {
                     e.printStackTrace();

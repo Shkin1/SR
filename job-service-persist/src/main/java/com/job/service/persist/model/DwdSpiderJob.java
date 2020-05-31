@@ -43,4 +43,24 @@ public class DwdSpiderJob {
     private Date createTime;
 
     private String positionDesc;
+
+    @Override
+    public String toString() {
+        return searchKey+","+position+","+salary+","+salaryType+","+salaryLowest+","+salaryHighest+","+education+","+experience+","+positionPeoples+","+cityCode;
+
+
+//                "DwdSpiderJob{" +
+//                "searchKey='" + searchKey + '\'' +
+//                ", position='" + position + '\'' +
+//                ", salary='" + salary + '\'' +
+//                ", salaryType='" + salaryType + '\'' +
+//                ", salaryLowest='" + salaryLowest + '\'' +
+//                ", salaryHighest='" + salaryHighest + '\'' +
+//                ", education='" + education + '\'' +
+//                ", experience='" + experience + '\'' +
+//                ", positionPeoples='" + positionPeoples + '\'' +
+//                ", city='" + city + '\'' +
+//                ", cityCode='" + cityCode + '\'' +
+//                '}';
+    }
 }

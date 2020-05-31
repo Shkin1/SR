@@ -51,7 +51,7 @@ public class SpiderJob {
         nStartUrl.setCharset("GBK");
         JobSchedule.isOpenJobSchedule = true;
         LOGGER.info(">>>>>>>>> open JobSchedule <<<<<<<<<<");
-        GeccoEngine.create().classpath("com.sr.demo.etl.spiders").start(nStartUrl).thread(80)
+        GeccoEngine.create().classpath("com.sr.job.service.etl.spiders").start(nStartUrl).thread(80)
                 //单个爬虫每次抓取完一个请求后的间隔时间
                 .interval(100)
                 .run();
@@ -63,6 +63,6 @@ public class SpiderJob {
 
     public static void main(String[] args) {
         String testUrl = "https://search.51job.com/list/addressCode,000000,0000,00,9,99,key,2,1.html?lang=c&postchannel=0000&workyear=99&cotype=99&degreefrom=99&jobterm=99&companysize=99&ord_field=0&dibiaoid=0&line=&welfare=";
-        start(testUrl, "推荐系统", "杭州");
+        start(testUrl, "java", "杭州");
     }
 }

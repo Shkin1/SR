@@ -3,6 +3,7 @@ package com.job.service.portal;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * @author pushkin
@@ -13,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * Date         Author          Version            Description
  * ------------------------------------------------------------
  */
+@EnableScheduling
 @SpringBootApplication
 @MapperScan(basePackages = "com.job.service.persist.mapper")
 public class JobServicePortalApplication {
