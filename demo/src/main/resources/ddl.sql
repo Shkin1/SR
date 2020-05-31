@@ -1,4 +1,4 @@
-CREATE TABLE `dianpingdb`.`user` (
+CREATE TABLE `sr`.`user` (
 	`id` int NOT NULL AUTO_INCREMENT,
 	`created_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
 	`updated_at` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',

@@ -1,15 +1,15 @@
 #add-mappings=true表示如果所有的controller都没有命中，则使用默认的静态资源处理器做匹配
 spring:
-  resources:
-    add-mappings: true  #false时没有命中时 抛404
+#  resources:
+#    add-mappings: true  #false时没有命中时 抛404
 
   datasource:
     username: root
-    url: jdbc:mysql://127.0.0.1:3306/sr?allowMultiQueries=true&autoReconnect=true&characterEncoding=UTF-8&useUnicode=true&useSSL=true
+    url: jdbc:mysql://localhost:3306/sr?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
     password: kl13jk14
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
 
 #admin官方账号的用户名和密码

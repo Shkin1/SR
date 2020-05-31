@@ -27,7 +27,16 @@
             <artifactId>gecco-spring</artifactId>
             <version>${gecco.version}</version>
         </dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.sr</groupId>
+            <artifactId>job-service-common</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>
