@@ -37,7 +37,7 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("API文档")
-                .contact(new Contact("shijinpu", "http://xxxxx/", "xxxx@xxx.com"))
+                .contact(new Contact("ShiJinYuan", "http://xxxxx/", "xxxx@xxx.com"))
                 .version("1.0")
                 .description("API 描述")
                 .build();

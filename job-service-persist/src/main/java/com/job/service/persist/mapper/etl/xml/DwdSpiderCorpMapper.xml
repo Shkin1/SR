@@ -10,7 +10,7 @@
     <result column="url" jdbcType="VARCHAR" property="url" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sr.demo.model.DwdSpiderCorp">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.job.service.persist.model.DwdSpiderCorp">
     <result column="info" jdbcType="LONGVARCHAR" property="info" />
   </resultMap>
   <sql id="Base_Column_List">
@@ -31,7 +31,7 @@
     delete from dwd_spider_corp
     where " uuid" = #{uuid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.sr.demo.model.DwdSpiderCorp">
+  <insert id="insert" parameterType="com.job.service.persist.model.DwdSpiderCorp">
     insert into dwd_spider_corp (uuid, name, type,
       peoples, trade_tag, url,
       create_time, info)
@@ -52,7 +52,7 @@
   </insert>
 
 
-  <insert id="insertSelective" parameterType="com.sr.demo.model.DwdSpiderCorp">
+  <insert id="insertSelective" parameterType="com.job.service.persist.model.DwdSpiderCorp">
     insert into dwd_spider_corp
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="uuid != null">
@@ -107,7 +107,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sr.demo.model.DwdSpiderCorp">
+  <update id="updateByPrimaryKeySelective" parameterType="com.job.service.persist.model.DwdSpiderCorp">
     update dwd_spider_corp
     <set>
       <if test="name != null">
@@ -134,7 +134,7 @@
     </set>
     where " uuid" = #{uuid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sr.demo.model.DwdSpiderCorp">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.job.service.persist.model.DwdSpiderCorp">
     update dwd_spider_corp
     set name = #{name,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
@@ -145,7 +145,7 @@
       info = #{info,jdbcType=LONGVARCHAR}
     where " uuid" = #{uuid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sr.demo.model.DwdSpiderCorp">
+  <update id="updateByPrimaryKey" parameterType="com.job.service.persist.model.DwdSpiderCorp">
     update dwd_spider_corp
     set name = #{name,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},

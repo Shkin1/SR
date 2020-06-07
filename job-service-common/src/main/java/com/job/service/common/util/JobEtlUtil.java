@@ -138,6 +138,8 @@ public class JobEtlUtil {
         String newStr = oldStr.replace("万/月", "")
                 .replace("千/月","")
                 .replace("万/年","")
+                .replace("千以下/月","")
+                .replace("万以下/月","")
                 .replace("元/天","");
 
         if (newStr.contains(SALARY_REGEX)){
@@ -162,6 +164,10 @@ public class JobEtlUtil {
         }
         dwdSpiderJob.setSalaryLowest(salayLowest);
         dwdSpiderJob.setSalaryHighest(salayHighest);
+    }
+
+    public static void main(String[] args) {
+        getSalayRange("1.5千以下/月",new DwdSpiderJob());
     }
 
     // --TODO 待优化

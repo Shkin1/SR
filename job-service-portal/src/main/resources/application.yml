@@ -2,7 +2,7 @@ server:
   port: 7070
 
 mybatis:
-  mapper-locations: com/job/service/persist/mapper/portal/xml/*.xml
+  mapper-locations: com/job/service/persist/mapper/portal/xml/*.xml,com/job/service/persist/mapper/etl/xml/*.xml
 
 spring:
   profiles:

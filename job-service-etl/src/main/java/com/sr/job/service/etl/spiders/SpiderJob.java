@@ -4,7 +4,6 @@ import com.geccocrawler.gecco.GeccoEngine;
 import com.geccocrawler.gecco.request.HttpGetRequest;
 import com.job.service.common.util.AddressUtil;
 import com.job.service.common.util.CommonUtil;
-import com.sr.job.service.etl.schedule.JobSchedule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,14 +48,14 @@ public class SpiderJob {
         nStartUrl.addParameter("city", city);
         nStartUrl.addParameter("addressCode", addressCode);
         nStartUrl.setCharset("GBK");
-        JobSchedule.isOpenJobSchedule = true;
+//        JobSchedule.isOpenJobSchedule = true;
         LOGGER.info(">>>>>>>>> open JobSchedule <<<<<<<<<<");
         GeccoEngine.create().classpath("com.sr.job.service.etl.spiders").start(nStartUrl).thread(80)
                 //单个爬虫每次抓取完一个请求后的间隔时间
                 .interval(100)
                 .run();
         LOGGER.info("完成,{},{},爬虫任务",city,key);
-        JobSchedule.isOpenJobSchedule = false;
+//        JobSchedule.isOpenJobSchedule = false;
         LOGGER.info(">>>>>>>>> close JobSchedule <<<<<<<<<<");
     }
 

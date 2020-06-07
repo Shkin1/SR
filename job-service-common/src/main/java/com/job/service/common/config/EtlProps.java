@@ -17,12 +17,12 @@ public class EtlProps {
     /**
      * 爬虫结果是否开启写入mysql数据库.
      */
-    public static final Boolean IS_OPEN_WRITE_MYSQL = false;
+    public static final Boolean IS_OPEN_WRITE_MYSQL = true;
 
     /**
      * 爬虫结果是否开启写入文件.
      */
-    public static final Boolean IS_OPEN_WRITE_FILE = true;
+    public static final Boolean IS_OPEN_WRITE_FILE = false;
 
     /**
      * 爬虫爬取的关键字.

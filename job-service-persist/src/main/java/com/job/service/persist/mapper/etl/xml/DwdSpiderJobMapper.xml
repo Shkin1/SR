@@ -15,14 +15,15 @@
     <result column="city_detail" jdbcType="VARCHAR" property="cityDetail" />
     <result column="publish_date" jdbcType="VARCHAR" property="publishDate" />
     <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="dt" jdbcType="VARCHAR" property="dt" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
   </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.sr.demo.model.DwdSpiderJob">
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.job.service.persist.model.DwdSpiderJob">
     <result column="position_desc" jdbcType="LONGVARCHAR" property="positionDesc" />
   </resultMap>
   <sql id="Base_Column_List">
     uuid, search_key, position, salary, education, experience, welfare_tag, summary_tag,
-    city, city_code, city_detail, publish_date, url, create_time
+    city, city_code, city_detail, publish_date, url, create_time, dt
   </sql>
   <sql id="Blob_Column_List">
     position_desc
@@ -39,18 +40,19 @@
     delete from dwd_spider_job
     where uuid = #{uuid,jdbcType=VARCHAR}
   </delete>
-  <insert id="insert" parameterType="com.sr.demo.model.DwdSpiderJob">
+  <insert id="insert" parameterType="com.job.service.persist.model.DwdSpiderJob">
     insert into dwd_spider_job (uuid, search_key, position,
       salary, education, experience,
       welfare_tag, summary_tag, city,
       city_code, city_detail, publish_date,
-      url, create_time, position_desc
+      url, create_time, position_desc, dt
       )
     values (#{uuid,jdbcType=VARCHAR}, #{searchKey,jdbcType=VARCHAR}, #{position,jdbcType=VARCHAR},
       #{salary,jdbcType=VARCHAR}, #{education,jdbcType=VARCHAR}, #{experience,jdbcType=VARCHAR},
       #{welfareTag,jdbcType=VARCHAR}, #{summaryTag,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR},
       #{cityCode,jdbcType=VARCHAR}, #{cityDetail,jdbcType=VARCHAR}, #{publishDate,jdbcType=VARCHAR},
-      #{url,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{positionDesc,jdbcType=LONGVARCHAR}
+      #{url,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{positionDesc,jdbcType=LONGVARCHAR},
+      #{dt,jdbcType=VARCHAR}
       )
   </insert>
 
@@ -59,19 +61,19 @@
       salary, salary_type, salary_lowest, salary_highest,education, experience,
       welfare_tag, summary_tag, city,
       city_code, city_detail, publish_date,
-      url, position_desc)
+      url, position_desc, dt)
     values
     <foreach collection ="jobList" item="job" separator =",">
       (#{job.uuid}, #{job.searchKey}, #{job.position},#{job.positionPeoples},
       #{job.salary},#{job.salaryType},#{job.salaryLowest},#{job.salaryHighest}, #{job.education}, #{job.experience},
       #{job.welfareTag}, #{job.summaryTag}, #{job.city},
       #{job.cityCode}, #{job.cityDetail}, #{job.publishDate},
-      #{job.url}, #{job.positionDesc})
+      #{job.url}, #{job.positionDesc}, #{job.dt})
     </foreach >
   </insert>
 
 
-  <insert id="insertSelective" parameterType="com.sr.demo.model.DwdSpiderJob">
+  <insert id="insertSelective" parameterType="com.job.service.persist.model.DwdSpiderJob">
     insert into dwd_spider_job
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="uuid != null">
@@ -168,7 +170,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.sr.demo.model.DwdSpiderJob">
+  <update id="updateByPrimaryKeySelective" parameterType="com.job.service.persist.model.DwdSpiderJob">
     update dwd_spider_job
     <set>
       <if test="searchKey != null">
@@ -216,7 +218,7 @@
     </set>
     where uuid = #{uuid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.sr.demo.model.DwdSpiderJob">
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.job.service.persist.model.DwdSpiderJob">
     update dwd_spider_job
     set search_key = #{searchKey,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},
@@ -234,7 +236,7 @@
       position_desc = #{positionDesc,jdbcType=LONGVARCHAR}
     where uuid = #{uuid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.sr.demo.model.DwdSpiderJob">
+  <update id="updateByPrimaryKey" parameterType="com.job.service.persist.model.DwdSpiderJob">
     update dwd_spider_job
     set search_key = #{searchKey,jdbcType=VARCHAR},
       position = #{position,jdbcType=VARCHAR},

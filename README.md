@@ -12,3 +12,5 @@ type:  GET
 sucess return: "爬取完成"
 ```
 
+### swagger地址
+http://127.0.0.1:7070/swagger-ui.html#/

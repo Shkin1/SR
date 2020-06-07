@@ -40,6 +40,8 @@ public class DwdSpiderJob {
 
     private String url;
 
+    private String dt;
+
     private Date createTime;
 
     private String positionDesc;

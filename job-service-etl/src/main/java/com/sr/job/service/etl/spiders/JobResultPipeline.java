@@ -6,11 +6,12 @@ import com.geccocrawler.gecco.pipeline.Pipeline;
 import com.geccocrawler.gecco.request.HttpRequest;
 import com.job.service.common.config.EtlProps;
 import com.job.service.common.util.CommonUtil;
+import com.job.service.common.util.DateUtil;
 import com.job.service.common.util.JobEtlUtil;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang3.StringUtils;
 import com.job.service.persist.model.DwdSpiderCorp;
 import com.job.service.persist.model.DwdSpiderJob;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -120,6 +122,7 @@ public class JobResultPipeline implements Pipeline<JobDetailBean> {
             dwdSpiderJob.setUrl(request.getUrl());
             dwdSpiderJob.setEducation(eduLevel.toString());
             dwdSpiderJob.setExperience(experience.toString());
+            dwdSpiderJob.setDt(DateUtil.dateToStr(new Date(), DateUtil.YYYYMMDD));
 
             if (EtlProps.IS_OPEN_WRITE_MYSQL){
                 aListJob.add(dwdSpiderJob);
