@@ -25,4 +25,27 @@
     </select>
 
 
+    <!--v1简单版先只对工作的职位position, 及公司名name进行搜索-->
+    <select id="search" parameterType="java.lang.String" resultType="java.util.Map">
+        SELECT A1.uuid, A1.position, A1.salary, A1.welfare_tag, A1.summary_tag, A1.city_detail, A1.url, A1.position_desc,
+                A2.name, A2.type, A2.type, A2.peoples, A2.trade_tag, A2.info, A2.url
+            FROM
+                (SELECT uuid,position,salary,welfare_tag,summary_tag,city_detail,url,position_desc
+                  FROM dwd_spider_job WHERE position like CONCAT('%', #{key, jdbcType=VARCHAR}, '%') AND city_code="080200") A1
+            LEFT JOIN
+                dwd_spider_corp A2
+            ON A1.uuid = A2.uuid
+        UNION
+        SELECT A3.uuid, A3.position, A3.salary, A3.welfare_tag, A3.summary_tag, A3.city_detail, A3.url, A3.position_desc,
+                A4.name, A4.type, A4.type, A4.peoples, A4.trade_tag, A4.info, A4.url
+            FROM
+                (SELECT * FROM dwd_spider_corp WHERE name like CONCAT('%', #{key, jdbcType=VARCHAR}, '%')) A4
+            LEFT JOIN
+                dwd_spider_job A3
+            ON A4.uuid=A3.uuid
+    </select>
+
+    <select id="getJobNumMap" resultType="java.util.Map">
+        SELECT city, count(uuid) AS jobCount FROM dwd_spider_job GROUP BY city_code ORDER BY count(uuid)
+    </select>
 </mapper>

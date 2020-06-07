@@ -18,6 +18,7 @@ import java.util.Map;
 @Mapper
 public interface JobServiceMapper {
     /**
+     * getJobNum
      *
      * @param city city
      * @return
@@ -25,9 +26,25 @@ public interface JobServiceMapper {
     int getJobNum(@Param("city") String city);
 
     /**
+     * getAreaJobNum
      *
      * @param city
      * @return
      */
     List<Map<String, Object>> getAreaJobNum(@Param("city") String city);
+
+    /**
+     * search
+     *
+     * @param key
+     * @return
+     */
+    List<Map<String,Object>> search(@Param("key") String key);
+
+    /**
+     * 工作数分布图
+     *
+     * @return
+     */
+    List<Map<String, Object>> getJobNumMap();
 }

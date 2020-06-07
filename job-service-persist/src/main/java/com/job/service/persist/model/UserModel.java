@@ -30,4 +30,32 @@ public class UserModel implements Serializable{
     private String nickName;
 
     private Integer gender;
+
+    /**
+     * 学历
+     */
+    private Integer education;
+
+    /**
+     * 经验
+     */
+    private Integer experience;
+
+    /**
+     * 擅长技术
+     */
+    private String techTag;
+
+    /**
+     * 期望职位
+     */
+    private String position;
+
+    /**
+     * 工作地点
+     */
+    private String cityCode;
+
+
+
 }

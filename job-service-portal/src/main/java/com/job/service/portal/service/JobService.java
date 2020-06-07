@@ -19,4 +19,13 @@ public interface JobService {
     int getJobNum(String city);
 
     List<Map<String, Object>> getAreaJobNum(@Param("city") String city);
+
+    List<Map<String,Object>> search(String key);
+
+    /**
+     * 工作数分布图
+     *
+     * @return
+     */
+    List<Map<String, Object>> getJobNumMap();
 }

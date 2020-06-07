@@ -3,7 +3,6 @@ package com.job.service.portal.controller;
 import com.job.service.common.exception.SrException;
 import com.job.service.common.restful.CommonRes;
 import com.job.service.common.restful.LoginReq;
-import com.job.service.common.restful.RegisterReq;
 import com.job.service.persist.model.UserModel;
 import com.job.service.portal.service.UserService;
 import io.swagger.annotations.Api;
@@ -74,13 +73,7 @@ public class UserLoginController {
      */
     @ResponseBody
     @PostMapping(value = {"/register"})
-    public CommonRes addUser(@Valid @RequestBody RegisterReq registerReq) throws UnsupportedEncodingException, SrException, NoSuchAlgorithmException {
-        UserModel registerUser = new UserModel();
-        registerUser.setTelphone(registerReq.getTelphone());
-        registerUser.setPassword(registerReq.getPassword());
-        registerUser.setNickName(registerReq.getNickName());
-        registerUser.setGender(registerReq.getGender());
-
+    public CommonRes addUser(@Valid @RequestBody UserModel registerUser) throws UnsupportedEncodingException, SrException, NoSuchAlgorithmException {
         UserModel register = userLoginService.register(registerUser);
         if (register.getId() == null) {
                 return CommonRes.create("注册失败");

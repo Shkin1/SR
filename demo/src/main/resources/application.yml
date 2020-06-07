@@ -1,8 +1,0 @@
-server:
-  port: 7070
-
-spring:
-  profiles:
-    active: dev
-mybatis:
-  mapper-locations: classpath:mapping/*.xml

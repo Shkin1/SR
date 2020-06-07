@@ -31,4 +31,14 @@ public class JobServiceImpl implements JobService {
     public List<Map<String, Object>> getAreaJobNum(String city) {
         return jobServiceMapper.getAreaJobNum(city);
     }
+
+    @Override
+    public List<Map<String, Object>> search(String key) {
+        return jobServiceMapper.search(key);
+    }
+
+    @Override
+    public List<Map<String, Object>> getJobNumMap() {
+        return jobServiceMapper.getJobNumMap();
+    }
 }
