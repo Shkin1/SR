@@ -28,4 +28,11 @@ public interface JobService {
      * @return
      */
     List<Map<String, Object>> getJobNumMap();
+
+    /**
+     * 擅长的技术
+     *
+     * @return
+     */
+    List<Map<String, Object>> getTechTag();
 }

@@ -17,7 +17,6 @@ import java.util.ArrayList;
  * @author shijinpu
  * @version v1.0.0
  * @date 2019/12/16 18:08
- * <p>Company:浩鲸云计算科技股份有限公司 </p>
  * <p>Description:
  * <p>
  * Modification History:

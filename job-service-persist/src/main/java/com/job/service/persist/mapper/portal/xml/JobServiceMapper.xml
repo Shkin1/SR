@@ -48,4 +48,9 @@
     <select id="getJobNumMap" resultType="java.util.Map">
         SELECT city, count(uuid) AS jobCount FROM dwd_spider_job GROUP BY city_code ORDER BY count(uuid)
     </select>
+
+    <select id="getTechTag" resultType="java.util.Map">
+        SELECT DISTINCT(search_key) FROM dwd_spider_job
+    </select>
+
 </mapper>

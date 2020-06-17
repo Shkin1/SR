@@ -25,6 +25,7 @@ import java.security.NoSuchAlgorithmException;
  */
 
 @RestController
+@CrossOrigin
 @RequestMapping(value = {"/user"})
 @Api(description = "用户登陆接口")
 public class UserLoginController {

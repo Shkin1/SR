@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
  * ------------------------------------------------------------
  */
 @RestController
+@CrossOrigin
 @RequestMapping(value = "/spider")
 public class JobSpiderController {
     @Value("${demo.spider.start.url}")

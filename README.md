@@ -12,6 +12,9 @@ type:  GET
 sucess return: "爬取完成"
 ```
 
+etl 参数设置位置: com.job.service.common.config.EtlProps
+
+
 ### swagger地址
 http://127.0.0.1:7070/swagger-ui.html#/
 

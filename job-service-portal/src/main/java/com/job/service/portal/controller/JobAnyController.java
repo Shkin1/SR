@@ -20,6 +20,7 @@ import java.util.Map;
  * ------------------------------------------------------------
  */
 @Api(description = "job接口")
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/job")
 public class JobAnyController {
@@ -84,9 +85,22 @@ public class JobAnyController {
     @ResponseBody
     @ApiOperation(value = "城市工作数分布", notes = "城市工作数分布")
     public CommonRes getJobNumMap(){
-        // --TODO 分页处理
         List<Map<String, Object>> areaJobNum = jobService.getJobNumMap();
         return CommonRes.create(areaJobNum);
+    }
+
+
+    /**
+     * 擅长的技术
+     *
+     * @return result
+     */
+    @GetMapping("/getTechTag")
+    @ResponseBody
+    @ApiOperation(value = "擅长的技术下拉框", notes = "擅长的技术下拉框")
+    public CommonRes getTechTag(){
+        List<Map<String, Object>> techTag = jobService.getTechTag();
+        return CommonRes.create(techTag);
     }
 
 }

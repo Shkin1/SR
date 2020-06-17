@@ -41,4 +41,9 @@ public class JobServiceImpl implements JobService {
     public List<Map<String, Object>> getJobNumMap() {
         return jobServiceMapper.getJobNumMap();
     }
+
+    @Override
+    public List<Map<String, Object>> getTechTag() {
+        return jobServiceMapper.getTechTag();
+    }
 }
