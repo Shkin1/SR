@@ -16,3 +16,15 @@ sucess return: "爬取完成"
 - job 基于51job数据分析
 - develop 搜索推荐
 
+
+## 业务界面
+![yw](./img/1.png)
+![yw](./img/2.jpg)
+
+
+## 算法模块
+主要使用xgboost回归预测
+![xgboost](./img/3.png)
+
+## 分析模块
+ pass
